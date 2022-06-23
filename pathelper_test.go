@@ -18,3 +18,17 @@ func ExampleExecDir() {
 
 	// Output:
 }
+
+func ExampleFileExists() {
+	exists := pathelper.FileExists("/tmp")
+	log.Printf("/tmp exists: %v", exists)
+
+	// Output:
+}
+
+func ExampleCommandExists() {
+	exists := pathelper.CommandExists("go")
+	log.Printf("go exists: %v", exists)
+
+	// Output:
+}

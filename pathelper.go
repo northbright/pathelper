@@ -1,7 +1,10 @@
 package pathelper
 
 import (
+	"errors"
+	"io/fs"
 	"os"
+	"os/exec"
 	"path/filepath"
 )
 
@@ -15,4 +18,16 @@ func ExecDir(relPath string) (string, error) {
 	}
 
 	return filepath.Join(filepath.Dir(ex), relPath), nil
+}
+
+// FileExists returns if given file exists or not.
+func FileExists(f string) bool {
+	_, err := os.Stat(f)
+	return !errors.Is(err, fs.ErrNotExist)
+}
+
+// CommandExists returns if given command exists or not.
+func CommandExists(cmd string) bool {
+	_, err := exec.LookPath(cmd)
+	return err == nil
 }
