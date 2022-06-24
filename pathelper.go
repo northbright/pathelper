@@ -1,3 +1,4 @@
+// pathelper is a golang package which provides path related helper functions.
 package pathelper
 
 import (
