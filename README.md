@@ -8,5 +8,5 @@
 pathelper is a golang package which provides path related helper functions.
 
 
-## Documentation
-* [Go Reference](https://pkg.go.dev/github.com/northbright/pathelper)
+## Docs
+* <https://pkg.go.dev/github.com/northbright/pathelper>
