@@ -32,3 +32,11 @@ func CommandExists(cmd string) bool {
 	_, err := exec.LookPath(cmd)
 	return err == nil
 }
+
+// CreateDirIfNotExists creates the directory if it does not exists.
+func CreateDirIfNotExists(dir string, perm os.FileMode) error {
+	if !FileExists(dir) {
+		return os.MkdirAll(dir, perm)
+	}
+	return nil
+}

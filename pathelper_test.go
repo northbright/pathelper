@@ -1,6 +1,7 @@
 package pathelper_test
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/northbright/pathelper"
@@ -31,4 +32,18 @@ func ExampleCommandExists() {
 	log.Printf("go exists: %v", exists)
 
 	// Output:
+}
+
+func ExampleCreateDirIfNotExists() {
+	dir := "test/output"
+	if err := pathelper.CreateDirIfNotExists(dir, 0755); err != nil {
+		log.Printf("CreateDirIfNotExists error: %v", err)
+		return
+	}
+
+	exists := pathelper.FileExists(dir)
+	fmt.Printf("%v\n", exists)
+
+	// Output:
+	// true
 }
