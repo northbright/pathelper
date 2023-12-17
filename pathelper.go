@@ -6,19 +6,13 @@ import (
 	"io/fs"
 	"os"
 	"os/exec"
-	"path/filepath"
 )
 
-// ExecDir returns the absolute path of given relative path to the current executable dir.
-// If relPath is "", it just returns the absolute path of current executable dir.
-func ExecDir(relPath string) (string, error) {
+// ExecDir returns the absolute path of current executable dir.
+// For Go 1.18 and later, you may just use os.Executable instead.
+func ExecDir() (string, error) {
 	// os.Executable requires Go 1.18+
-	ex, err := os.Executable()
-	if err != nil {
-		return "", err
-	}
-
-	return filepath.Join(filepath.Dir(ex), relPath), nil
+	return os.Executable()
 }
 
 // FileExists returns if given file exists or not.

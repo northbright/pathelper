@@ -3,19 +3,20 @@ package pathelper_test
 import (
 	"fmt"
 	"log"
+	"path/filepath"
 
 	"github.com/northbright/pathelper"
 )
 
 // Run "go test -c && ./pathelper.test"
 func ExampleExecDir() {
-	// Pass "" as relPath to get current executable dir.
-	execDir, _ := pathelper.ExecDir("")
+	// Get current executable dir.
+	execDir, _ := pathelper.ExecDir()
 	log.Printf("executable dir: %v", execDir)
 
-	// Pass "./img" as relPath to get absolute path of image dir.
-	imgDir, _ := pathelper.ExecDir("./img")
-	log.Printf("image dir: %v", imgDir)
+	// Make an absolute path for image dir.
+	imageDir := filepath.Join(execDir, "static", "images")
+	log.Printf("image dir: %v", imageDir)
 
 	// Output:
 }
