@@ -18,8 +18,8 @@ jobs:
         - Ubuntu-20.04
         - Ubuntu-22.04
         go:
-        - 1.17
         - 1.18
+        - 1.21
 
       fail-fast: false
     steps:
