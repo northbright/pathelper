@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"os"
 	"os/exec"
+	"path/filepath"
 )
 
 // ExecDir returns the absolute path of current executable dir.
@@ -33,4 +34,12 @@ func CreateDirIfNotExists(dir string, perm os.FileMode) error {
 		return os.MkdirAll(dir, perm)
 	}
 	return nil
+}
+
+// BaseNameWithoutExt returns file base name without ext name.
+func BaseNameWithoutExt(fileName string) string {
+	base := filepath.Base(fileName)
+	ext := filepath.Ext(fileName)
+
+	return base[:len(base)-len(ext)]
 }

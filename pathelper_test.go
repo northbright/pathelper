@@ -48,3 +48,13 @@ func ExampleCreateDirIfNotExists() {
 	// Output:
 	// true
 }
+
+func ExampleBaseNameWithoutExt() {
+	file := "/tmp/input/data.json"
+
+	baseWithoutExt := pathelper.BaseNameWithoutExt(file)
+	fmt.Printf("%s\n", baseWithoutExt)
+
+	// Output:
+	// data
+}
