@@ -36,8 +36,8 @@ func CreateDirIfNotExists(dir string, perm os.FileMode) error {
 	return nil
 }
 
-// BaseNameWithoutExt returns file base name without ext name.
-func BaseNameWithoutExt(fileName string) string {
+// BaseWithoutExt returns file base name without ext name.
+func BaseWithoutExt(fileName string) string {
 	base := filepath.Base(fileName)
 	ext := filepath.Ext(fileName)
 
