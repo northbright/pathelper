@@ -9,11 +9,15 @@ import (
 	"path/filepath"
 )
 
-// ExecDir returns the absolute path of current executable dir.
-// For Go 1.18 and later, you may just use os.Executable instead.
+// ExecDir returns the absolute path of current executable's dir.
 func ExecDir() (string, error) {
 	// os.Executable requires Go 1.18+
-	return os.Executable()
+	p, err := os.Executable()
+	if err != nil {
+		return "", err
+	}
+
+	return filepath.Dir(p), nil
 }
 
 // FileExists returns if given file exists or not.
