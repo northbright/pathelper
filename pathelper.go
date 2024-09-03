@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 )
 
 // ExecDir returns the absolute path of current executable's dir.
@@ -46,4 +47,19 @@ func BaseWithoutExt(fileName string) string {
 	ext := filepath.Ext(fileName)
 
 	return base[:len(base)-len(ext)]
+}
+
+// ReplacePrefix returns a copy of path that old prefix in the path replaced with new prefix.
+// The returned path is converted into an operating system path.
+// In the function, it creates slash-separated copies of path and old / prefix then do the replacement.
+// So path, oldPrefix and newPrefix can be slash-separated or operating system paths.
+// e.g. path = "..\..\a\b\c", prefix = "../../a", new prefix = "C:\Users\RUNNER~1\AppData\Local\a"
+// It returns "C:\Users\RUNNER~1\AppData\Local\a\b\c" on Windows.
+func ReplacePrefix(path, oldPrefix, newPrefix string) string {
+	path = filepath.ToSlash(filepath.Clean(path))
+	oldPrefix = filepath.ToSlash(filepath.Clean(oldPrefix))
+	newPrefix = filepath.ToSlash(filepath.Clean(newPrefix))
+
+	path = strings.Replace(path, oldPrefix, newPrefix, 1)
+	return filepath.FromSlash(path)
 }

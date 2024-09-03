@@ -3,6 +3,7 @@ package pathelper_test
 import (
 	"fmt"
 	"log"
+	"os"
 	"path/filepath"
 
 	"github.com/northbright/pathelper"
@@ -57,4 +58,16 @@ func ExampleBaseWithoutExt() {
 
 	// Output:
 	// data
+}
+
+func ExampleReplacePrefix() {
+	path := "templates/markdown/README.md"
+	oldPrefix := "templates/markdown"
+	newPrefix := filepath.Join(os.TempDir(), "markdown_copy")
+
+	log.Printf("start replace prefix in path...\npath: %v\nold prefix: %v\nnew prefix: %v", path, oldPrefix, newPrefix)
+	path = pathelper.ReplacePrefix(path, oldPrefix, newPrefix)
+	log.Printf("replace prefix done, path: %v", path)
+
+	// Output:
 }
