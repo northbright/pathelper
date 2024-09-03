@@ -1,3 +1,3 @@
 module github.com/northbright/pathelper
 
-go 1.18
+go 1.23

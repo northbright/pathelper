@@ -12,22 +12,22 @@ jobs:
     strategy:
       matrix:
         os:
-        - Windows-2019
-        - macOS-12
-        - macOS-latest
-        - Ubuntu-20.04
-        - Ubuntu-22.04
+        - windows-2019
+        - windows-latest
+        - macos-12
+        - macos-latest
+        - ubuntu-24.04
+        - ubuntu-latest
         go:
-        - 1.18
-        - 1.21
+        - "1.23"
 
       fail-fast: false
     steps:
     - name: Checkout source codes
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Go
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@v5
       with:
         go-version: ${{ matrix.go }}
 
